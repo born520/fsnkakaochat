@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>카카오톡 채널 채팅하기</title>
-    <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.6.0/kakao.min.js" integrity="sha384-6MFdIr0zOira1CHQkedUqJVql0YtcZA1P0nbPrQYJXVJZUkTk/oX4U9GhUIs3/z8" crossorigin="anonymous"></script>
     <style>
         body {
             display: flex;
@@ -13,27 +12,47 @@
             height: 100vh;
             margin: 0;
             font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
         }
-        #kakao-talk-channel-chat-button {
-            cursor: pointer;
+        .kakao-chat-btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: #FEE500;
+            color: #000000;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        .kakao-chat-btn:hover {
+            background-color: #FFD700;
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+            transform: translateY(-2px);
         }
     </style>
 </head>
 <body>
-    <div id="kakao-talk-channel-chat-button"></div>
+    <a href="https://pf.kakao.com/_nxaLQG/chat" target="_blank" class="kakao-chat-btn">
+        카카오톡 채널 채팅하기
+    </a>
 
     <script>
-        Kakao.init('ab2f5e893a660017fd43d0fa939fa567');
-
-        Kakao.Channel.createChatButton({
-            container: '#kakao-talk-channel-chat-button',
-            channelPublicId: '_nxaLQG',
-            title: '채팅 상담',
-            size: 'large',
-            color: 'yellow',
-            shape: 'pc',
-            supportMultipleDensities: true,
-            chatFlag: true
+        // 버튼 클릭 시 이벤트
+        document.querySelector('.kakao-chat-btn').addEventListener('click', function(e) {
+            e.preventDefault(); // 기본 동작 방지
+            
+            // 모바일 기기인지 확인
+            var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            
+            if (isMobile) {
+                // 모바일에서는 카카오톡 앱으로 연결
+                location.href = 'kakaoplus://plusfriend/chat/_nxaLQG';
+            } else {
+                // 데스크톱에서는 새 창으로 채팅 페이지 열기
+                window.open('https://pf.kakao.com/_nxaLQG/chat', '_blank');
+            }
         });
     </script>
 </body>
