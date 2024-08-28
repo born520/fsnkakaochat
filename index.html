@@ -23,7 +23,12 @@
     <div id="kakao-talk-channel-chat-button"></div>
 
     <script>
-        Kakao.init('ab2f5e893a660017fd43d0fa939fa567'); // 제공된 JavaScript 키 적용
+        // 이전 페이지 주소 숨기기
+        if (window.history && window.history.pushState) {
+            window.history.pushState('', document.title, window.location.pathname);
+        }
+
+        Kakao.init('ab2f5e893a660017fd43d0fa939fa567');
 
         Kakao.Channel.createChatButton({
             container: '#kakao-talk-channel-chat-button',
