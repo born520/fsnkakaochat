@@ -13,7 +13,7 @@
             height: 100vh;
             margin: 0;
             font-family: Arial, sans-serif;
-            background-color: transparent; /* 배경을 투명하게 설정 */
+            background-color: transparent;
         }
         .kakao-chat-btn {
             display: inline-block;
@@ -26,11 +26,22 @@
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
+            text-align: center;
         }
         .kakao-chat-btn:hover {
             background-color: #FFD700;
             box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
             transform: translateY(-2px);
+        }
+        
+        /* 모바일 화면을 위한 미디어 쿼리 */
+        @media (max-width: 768px) {
+            .kakao-chat-btn {
+                width: 80%; /* 화면의 80% 너비 */
+                max-width: 300px; /* 최대 너비 설정 */
+                padding: 15px 10px; /* 좌우 패딩 줄임 */
+                font-size: 16px; /* 폰트 크기 조정 */
+            }
         }
     </style>
 </head>
@@ -41,7 +52,6 @@
 
     <script>
         document.getElementById('kakaoChatBtn').addEventListener('click', function() {
-            // 중간 페이지 생성
             var intermediatePageContent = `
                 <!DOCTYPE html>
                 <html lang="ko">
@@ -64,7 +74,6 @@
                 </html>
             `;
             
-            // 새 창에서 중간 페이지 열기
             var intermediateWindow = window.open('about:blank', '_blank');
             intermediateWindow.document.write(intermediatePageContent);
             intermediateWindow.document.close();
