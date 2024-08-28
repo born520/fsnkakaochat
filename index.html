@@ -23,16 +23,17 @@
     <div id="kakao-talk-channel-chat-button"></div>
 
     <script>
-        // 이전 페이지 주소 숨기기
-        if (window.history && window.history.pushState) {
-            window.history.pushState('', document.title, window.location.pathname);
-        }
-
         Kakao.init('ab2f5e893a660017fd43d0fa939fa567');
 
         Kakao.Channel.createChatButton({
             container: '#kakao-talk-channel-chat-button',
-            channelPublicId: '_nxaLQG'
+            channelPublicId: '_nxaLQG',
+            title: '채팅 상담',
+            size: 'large',
+            color: 'yellow',
+            shape: 'pc',
+            supportMultipleDensities: true,
+            chatFlag: true
         });
     </script>
 </body>
